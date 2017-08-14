@@ -1,0 +1,17 @@
+#java specific
+*.class
+
+#netbeans ignore peronal stuff
+nbproject/
+
+# generic files ignore
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+#package files
+*.jar
+*.war
+*.ear
+
