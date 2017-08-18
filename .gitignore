@@ -1,3 +1,4 @@
+.directory
 #java specific
 *.class
 
@@ -16,3 +17,4 @@ nbproject/
 *.ear
 
 /ejercicio_1/build/
+/ejercicio_2/build/
