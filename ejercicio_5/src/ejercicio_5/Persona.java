@@ -8,6 +8,8 @@ package ejercicio_5;
 /**
  *
  * @author kdr
+ * @version 3.0
+ * @since 31-08-2017
  */
 public class Persona {
     
@@ -16,6 +18,8 @@ public class Persona {
     private String surname;
     //private int age;
     private int speed;
+    private int distance;
+    private int gram;
     /**
      * 
      * @param rut
@@ -29,6 +33,8 @@ public class Persona {
         this.surname = surname;
         //this.age = age;
         this.speed = 0;
+        this.distance = 0;
+        this.gram = 0;
     }
     
     /**
@@ -36,6 +42,8 @@ public class Persona {
      */
     public Persona() {
         this.speed = 0;
+        this.distance = 0;
+        this.gram = 0;
     }
     
     /*
@@ -76,6 +84,10 @@ public class Persona {
         this.age = age;
     }*/
     
+    /**
+     * 
+     * @return nombre completo
+     */
     public String imprimir() {
         return this.name + " " + this.surname;
     }
@@ -84,9 +96,43 @@ public class Persona {
         this.speed += run;
     }
     
+    /**
+     * 
+     * @return velocidad total. 
+     */
     public int speed() {
         return this.speed;
     }
     
+    /**
+     * 
+     * @param distancePerson no tiene que ser superior a 1000
+     */
+    public void walk(int distancePerson){
+        this.distance += distancePerson;
+    }
     
+    /**
+     * 
+     * @return distancia total recorrida.
+     */
+    public int distanceTotal() {
+        return this.distance;
+    }
+    
+    /**
+     * 
+     * @param gram 
+     */
+    public void eat (int gram) {
+        this.gram = gram;
+    }
+    
+    /**
+     * 
+     * @return gramos totales consumidos 
+     */
+    public int gramTotal() {
+        return this.gram;
+    }
 }

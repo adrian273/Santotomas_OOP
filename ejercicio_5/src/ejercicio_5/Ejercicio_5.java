@@ -78,10 +78,48 @@ public class Ejercicio_5 {
         p2.correr(random.nextInt(10) + 1);
         p2.correr(random.nextInt(10) + 1);
         
+        /**
+         * Distancia al caminar.
+         */
+        p.walk(random.nextInt(1000));
+        p.walk(random.nextInt(1000));
+        p.walk(random.nextInt(1000));
+        p.walk(random.nextInt(1000));
+        
+        p1.walk(random.nextInt(1000));
+        p1.walk(random.nextInt(1000));
+        p1.walk(random.nextInt(1000));
+        p1.walk(random.nextInt(1000));
+        
+        p2.walk(random.nextInt(1000));
+        p2.walk(random.nextInt(1000));
+        p2.walk(random.nextInt(1000));
+        p2.walk(random.nextInt(1000));
+        
+        /**
+         * Gramos consumidos.
+         */
+        p.eat(random.nextInt(100));
+        p.eat(random.nextInt(100));
+        p.eat(random.nextInt(100));
+        
+        p1.eat(random.nextInt(100));
+        p1.eat(random.nextInt(100));
+        p1.eat(random.nextInt(100));
+        
+        p2.eat(random.nextInt(100));
+        p2.eat(random.nextInt(100));
+        p2.eat(random.nextInt(100));
         
         System.out.println(p.imprimir() + "-> velocidad: " +  p.speed());
+        System.out.println("Distancia total recorrida: " + p.distanceTotal());
+        System.out.println("Cantidad de gramos consumidos: " + p.gramTotal());
         System.out.println(p1.imprimir() + "-> velocidad: " + p1.speed());
+        System.out.println("Distancia total recorrida: " + p1.distanceTotal());
+        System.out.println("Cantidad de gramos consumidos: " + p1.gramTotal());
         System.out.println(p2.imprimir() + "-> velocidad: " + p2.speed());
+        System.out.println("Distancia total recorrida: " + p2.distanceTotal());
+        System.out.println("Cantidad de gramos consumidos: " + p2.gramTotal());
     }
     
 }
