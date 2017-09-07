@@ -8,8 +8,8 @@ package ejercicio_5;
 /**
  *
  * @author kdr
- * @version 3.0
- * @since 31-08-2017
+ * @version 4.0
+ * @since 05-09-2017
  */
 public class Persona {
     
@@ -20,12 +20,16 @@ public class Persona {
     private int speed;
     private int distance;
     private int gram;
+    private int cc;
+    private int time;
     /**
      * 
      * @param rut
      * @param name
      * @param surname
      * @param age 
+     * @param cc Centimetros cubicos de agua bebida.
+     * @param time tiempo en llegar a la meta.
      */
     public Persona( String name, String surname) {
         //this.rut = rut;
@@ -35,6 +39,8 @@ public class Persona {
         this.speed = 0;
         this.distance = 0;
         this.gram = 0;
+        this.cc = 0;
+        this.time = 0;
     }
     
     /**
@@ -44,6 +50,7 @@ public class Persona {
         this.speed = 0;
         this.distance = 0;
         this.gram = 0;
+        this.cc = 0;
     }
     
     /*
@@ -125,7 +132,7 @@ public class Persona {
      * @param gram 
      */
     public void eat (int gram) {
-        this.gram = gram;
+        this.gram += gram;
     }
     
     /**
@@ -135,4 +142,38 @@ public class Persona {
     public int gramTotal() {
         return this.gram;
     }
+    
+    /**
+     * 
+     * @param cc 
+     */
+    public void cubicCentimeter (int cc) {
+        this.cc = cc;
+    }
+    /**
+     * 
+     * @return total de centimetros cubicos de agua consumida.
+     */
+    public int ccTotal() {
+        return this.cc;
+    }
+    
+    /**
+     * 
+     * @param time tiempo en llegar a la meta.
+     */
+    public void timeGoal(int time){
+        this.time = time;
+    }
+    
+    /**
+     * 
+     * @return tiempo total 
+     */
+    public int timeTotal(){
+        return this.time;
+    }
+    
+    
+    
 }

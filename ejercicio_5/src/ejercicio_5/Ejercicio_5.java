@@ -111,15 +111,47 @@ public class Ejercicio_5 {
         p2.eat(random.nextInt(100));
         p2.eat(random.nextInt(100));
         
+        /**
+         * @ Agua consumida en centimetros cubicos.
+         */
+        p.cubicCentimeter(random.nextInt(5000));
+        p1.cubicCentimeter(random.nextInt(5000));
+        p2.cubicCentimeter(random.nextInt(5000));
+        
+        /**
+         * @ tiempo en llegar a la meta
+         */
+        p.timeGoal(random.nextInt(600));
+        p1.timeGoal(random.nextInt(600));
+        p2.timeGoal(random.nextInt(600));
+        
+        /**
+         * persona 1
+         */
         System.out.println(p.imprimir() + "-> velocidad: " +  p.speed());
         System.out.println("Distancia total recorrida: " + p.distanceTotal());
         System.out.println("Cantidad de gramos consumidos: " + p.gramTotal());
+        System.out.println("Cantidad consumida de agua: " + p.ccTotal() + "cc");
+        System.out.println("Tiempo en llegar a la meta: " + p.timeTotal());
+        System.out.println("------------------------------------------------");
+        /**
+         * persona 2
+         */
         System.out.println(p1.imprimir() + "-> velocidad: " + p1.speed());
         System.out.println("Distancia total recorrida: " + p1.distanceTotal());
         System.out.println("Cantidad de gramos consumidos: " + p1.gramTotal());
+        System.out.println("Cantidad consumida de agua " + p1.ccTotal() + "cc");
+        System.out.println("Tiempo en llegar a la meta: " + p.timeTotal());
+        System.out.println("------------------------------------------------");
+        /**
+         * persona 3
+         */
         System.out.println(p2.imprimir() + "-> velocidad: " + p2.speed());
         System.out.println("Distancia total recorrida: " + p2.distanceTotal());
         System.out.println("Cantidad de gramos consumidos: " + p2.gramTotal());
+        System.out.println("Cantidad consumida de agua " + p2.ccTotal() + "cc");
+        System.out.println("Tiempo en llegar a la meta: " + p.timeTotal());
+        System.out.println("------------------------------------------------");
     }
     
 }
