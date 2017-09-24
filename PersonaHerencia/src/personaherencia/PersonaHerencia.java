@@ -12,10 +12,10 @@ public class PersonaHerencia {
 
     public static void main(String[] args) {
         
-        Estudiante e = new Estudiante(273, "188915051", "Adrian", "Verdugo", "a@a.cl");
-        Vendedor v = new Vendedor(150000,350000, "123", "juan", "perez", "j@k.cl");
-        Administrativo a = new Administrativo("Info",12230, "188", "karen", "rojas", "a@a.lc");
-        
+        Estudiante e = new Estudiante(100, "12.345.678-9", "Juan", "Soto", "jsoto@clase.com");
+        Vendedor v = new Vendedor(125000,450000, "11.963.741-5", "Esteban", "Salas", "ESalas@clase.com");
+        Administrativo a = new Administrativo("Ventas",450000, "14.362.857-9", "Gabriela", "Rivas", "GRivas@clase.com");
+                
         System.out.println("Estudiante: " + e.nombreCompleto());
         System.out.println("Vendedor: " + v.nombreCompleto());
         System.out.println("Sueldo vendedor: "  + v.sueldo());
