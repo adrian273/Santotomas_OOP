@@ -1,8 +1,6 @@
 
 package partei;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,6 +12,7 @@ public class ParteI {
 
    
     public static void main(String[] args) {
-        
+       Menu main = new Menu();
+       main.Main();
     }
 }
