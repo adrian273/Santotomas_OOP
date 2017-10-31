@@ -2,6 +2,7 @@ package partei;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -13,10 +14,13 @@ public class Menu {
     private String rut, nombre, apellido, telefono;
     
     private final ArrayList<Cliente> cliente;
+    private ArrayList<Chofer> chofer;
+    //private TipoLicencia tipoLicencia;
     
     Menu() {
         this.input = new Scanner(System.in);
         cliente = new ArrayList<>();
+        chofer = new ArrayList<>();
     }
     
     public void Main() {
@@ -46,7 +50,7 @@ public class Menu {
                         
                         switch(option) {
                             case 1: this.addNewClient(); break;
-                            case 2: break;
+                            case 2: this.addNewDriver(); break;
                             case 3: break;
                             case 4: break;
                             case 5: break;
@@ -67,7 +71,7 @@ public class Menu {
                         
                         switch(option) {
                             case 1: this.viewClient(); break;
-                            case 2: break;
+                            case 2: this.viewDriver(); break;
                             case 3: break;
                             case 4: break;
                             case 5: break;
@@ -131,10 +135,56 @@ public class Menu {
             System.out.println("[Lista vacia]No ahi datos que mostrar !");
         } else {
             cliente.forEach((item) -> {
-                System.out.println("**** " + item.getNombre() + " " + item.getApellido());
+                System.out.println("**** " + item.getNombre() + " " + item.getApellido() + " " + item.getCorreo());
             });
             
         }
     }
     
+    /**
+     * ------------------------------------------------------------------------*
+     * |                        Choferes                                       |
+     * ------------------------------------------------------------------------*
+     */
+    
+    /**
+     * @info Agregar nuevos clientes
+     */
+    private void addNewDriver() {
+        System.out.println("------------ Choferes --------------------");
+        System.out.println("Rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("Nombre: ");
+        this.nombre = this.input.next();
+        
+        System.out.println("Apellido: ");
+        this.apellido = this.input.next();
+        
+        System.out.println("Telefono");
+        this.telefono = this.input.next();
+        
+        System.out.println( "Tipo licencia :" + Arrays.toString(TipoLicencia.values()));
+        
+        TipoLicencia tipoLicencia = TipoLicencia.valueOf(this.input.next());
+        
+        Chofer cho = new Chofer(tipoLicencia, this.rut, this.nombre, this.apellido, this.telefono);
+        chofer.add(cho);
+        
+    }
+    
+    /**
+     * @info Lista para ver a los choferes
+     */
+    
+    private void viewDriver() {
+        if(chofer.isEmpty()){
+            System.out.println("[ERROR]No hay datos que mostrar !");
+        }
+        else {
+            chofer.forEach((item) -> {
+                System.out.println("***" + item.getNombre() + " " + item.getApellido() + "[RUT] " + item.getRut());
+            });
+        }
+    }
 }
