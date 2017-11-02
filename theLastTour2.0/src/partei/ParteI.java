@@ -1,8 +1,6 @@
 
 package partei;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Adrian Verdugo

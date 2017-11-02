@@ -14,13 +14,17 @@ public class Menu {
     private String rut, nombre, apellido, telefono;
     
     private final ArrayList<Cliente> cliente;
-    private ArrayList<Chofer> chofer;
+    private final ArrayList<Chofer> chofer;
     //private TipoLicencia tipoLicencia;
+    private final ArrayList<Azafata> azafata;
+    private final ArrayList<Auxiliar> auxiliar;
     
     Menu() {
         this.input = new Scanner(System.in);
         cliente = new ArrayList<>();
         chofer = new ArrayList<>();
+        azafata = new ArrayList<>();
+        auxiliar = new ArrayList<>();
     }
     
     public void Main() {
@@ -51,12 +55,28 @@ public class Menu {
                         switch(option) {
                             case 1: this.addNewClient(); break;
                             case 2: this.addNewDriver(); break;
-                            case 3: break;
-                            case 4: break;
+                            case 3: this.addNewAzafata(); break;
+                            case 4: this.addNewAssistant(); break; // auxiliar
                             case 5: break;
                             default: System.out.println("Opcion o valida!");
                         }
                         
+                        break;
+                    
+                    case 2:
+                        System.out.println("----------- Buscar -----------");
+                        for(String search : optionsMain)
+                            System.out.println(search);
+                        
+                        option = this.input.nextInt();
+                        
+                        switch(option) {
+                            case 1: this.searchClient(); break;
+                            case 2: this.searchDriver(); break;
+                            case 3: this.searchAzafata(); break;
+                            case 4: this.searchAssistant(); break;
+                            case 5: break;
+                        }
                         break;
                         
                     /**
@@ -72,8 +92,8 @@ public class Menu {
                         switch(option) {
                             case 1: this.viewClient(); break;
                             case 2: this.viewDriver(); break;
-                            case 3: break;
-                            case 4: break;
+                            case 3: this.viewAzafata(); break;
+                            case 4: this.viewAssistant(); break;
                             case 5: break;
                             default: System.out.println("Opcion no valida"); break;
                         }
@@ -142,6 +162,29 @@ public class Menu {
     }
     
     /**
+     * buscador de Cliente.
+     */
+    private void searchClient() {
+        System.out.println("Ingrese rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("------------- Resultado de Busqueda ------------------");
+        System.out.println(this.getSearchClient(rut));
+    }
+    
+    /**
+     * 
+     * @param rut
+     * @return datos del cliente encontrado
+     */
+    private String getSearchClient(String rut) {
+        for(Cliente c : cliente)
+            if(rut.equals(c.getRut()))
+                return c.getNombre() + " " + c.getApellido() + " " + c.getCorreo();
+        return "[Error] Resultado no encontrado";
+    }
+    
+    /**
      * ------------------------------------------------------------------------*
      * |                        Choferes                                       |
      * ------------------------------------------------------------------------*
@@ -186,5 +229,160 @@ public class Menu {
                 System.out.println("***" + item.getNombre() + " " + item.getApellido() + "[RUT] " + item.getRut());
             });
         }
+    }
+    
+    /**
+     * buscador de choferes.
+     */
+    private void searchDriver() {
+        System.out.println("Ingrese rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("------------- Resultado de Busqueda ------------------");
+        System.out.println(this.getSearchDriver(rut));
+    }
+    
+    /**
+     * 
+     * @param rut
+     * @return datos del choferes encontrado
+     */
+    private String getSearchDriver(String rut) {
+        for(Chofer c : chofer)
+            if(rut.equals(c.getRut()))
+                return c.getNombre() + " " + c.getApellido() + " tipo licencia: " + c.getLicencia().name();
+        return "[Error] Resultado no encontrado";
+    }
+    
+    /**
+     * |------------------------------------------------------------------|
+     * |                    Auxiliar                                      |
+     * |------------------------------------------------------------------|
+     */
+    
+    private void addNewAssistant() {
+        System.out.println("------------ Auxliar --------------------");
+        System.out.println("Rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("Nombre: ");
+        this.nombre = this.input.next();
+        
+        System.out.println("Apellido: ");
+        this.apellido = this.input.next();
+        
+        System.out.println("Telefono");
+        this.telefono = this.input.next();
+        
+        String telefonoEmergencia = this.input.next();
+        
+        Auxiliar aux = new Auxiliar(telefonoEmergencia, this.rut, this.nombre, this.apellido, this.telefono);
+        auxiliar.add(aux);
+        
+    }
+    
+    private void viewAssistant() {
+        System.out.println("------------------ Lista de auxiliares -----------------");
+        if(auxiliar.isEmpty()) 
+            System.out.println("[Error] No hay datos que mostrar");
+        else
+            auxiliar.forEach((item) -> {
+                System.out.println("***" + item.getNombre() + " " + item.getApellido() + "[RUT] " + item.getRut());
+            });
+    }
+    
+    /**
+     * buscador de Axuliarles.
+     */
+    private void searchAssistant() {
+        System.out.println("Ingrese rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("------------- Resultado de Busqueda ------------------");
+        System.out.println(this.getSearchAssistant(rut));
+    }
+    
+    /**
+     * 
+     * @param rut
+     * @return datos del auxilar encontrado
+     */
+    private String getSearchAssistant(String rut) {
+        for(Auxiliar a : auxiliar)
+            if(rut.equals(a.getRut()))
+                return a.getNombre() + " " + a.getApellido() + " " + a.getTelefono_E();
+        return "[Error] Resultado no encontrado";
+    }
+    
+    /**
+     * |-----------------------------------------------------------------------|
+     * |                                Azafatas                               |
+     * |-----------------------------------------------------------------------|
+
+     */
+    
+    
+    /**
+     * @info @agregar nueva azafata
+     */
+    private void addNewAzafata() {
+        System.out.println("------------ Azafata --------------------");
+        System.out.println("Rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("Nombre: ");
+        this.nombre = this.input.next();
+        
+        System.out.println("Apellido: ");
+        this.apellido = this.input.next();
+        
+        System.out.println("Telefono");
+        this.telefono = this.input.next();
+        
+        System.out.println("Edad: ");
+        int edad = this.input.nextInt();
+        
+        if(edad > 21) {
+            Azafata aza = new Azafata(edad, this.rut, this.nombre, this.apellido, this.telefono);
+            azafata.add(aza);
+        }else {
+            System.out.println("[Error!]Edad no Apropiada para el trabajo");
+        }
+    }
+    
+    /**
+     * @info Lista de azafatas.
+     */
+    private void viewAzafata() {
+        System.out.println("---------------------- Lista de Azafatas -----------------------");
+        if(azafata.isEmpty()) System.out.println("[Error] No hay datos que mostrar!");
+        
+        else
+        azafata.forEach((item) -> {
+            System.out.println("***" + item.getNombre() + " " + item.getApellido() + "[RUT] " + item.getRut());
+        });
+    }
+    
+    /**
+     * buscador de azafatas.
+     */
+    private void searchAzafata() {
+        System.out.println("Ingrese rut: ");
+        this.rut = this.input.next();
+        
+        System.out.println("------------- Resultado de Busqueda ------------------");
+        System.out.println(this.getSearchAzafata(rut));
+    }
+    
+    /**
+     * 
+     * @param rut
+     * @return datos de la azafata encontrada
+     */
+    private String getSearchAzafata(String rut) {
+        for(Azafata a : azafata)
+            if(rut.equals(a.getRut()))
+                return a.getNombre() + " " + a.getApellido() + " " + a.getEdad();
+        return "[Error] Resultado no encontrado";
     }
 }
