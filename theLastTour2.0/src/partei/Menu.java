@@ -19,12 +19,19 @@ public class Menu {
     private final ArrayList<Azafata> azafata;
     private final ArrayList<Auxiliar> auxiliar;
     
+    private final ArrayList<Bus> bus;
+    
+    private Chofer cho;
+    private Azafata aza;
+    private Auxiliar aux;
+    
     Menu() {
         this.input = new Scanner(System.in);
         cliente = new ArrayList<>();
         chofer = new ArrayList<>();
         azafata = new ArrayList<>();
         auxiliar = new ArrayList<>();
+        bus = new ArrayList<>();
     }
     
     public void Main() {
@@ -57,7 +64,7 @@ public class Menu {
                             case 2: this.addNewDriver(); break;
                             case 3: this.addNewAzafata(); break;
                             case 4: this.addNewAssistant(); break; // auxiliar
-                            case 5: break;
+                            case 5: this.addNewBus(); break;
                             default: System.out.println("Opcion o valida!");
                         }
                         
@@ -75,7 +82,7 @@ public class Menu {
                             case 2: this.searchDriver(); break;
                             case 3: this.searchAzafata(); break;
                             case 4: this.searchAssistant(); break;
-                            case 5: break;
+                            case 5: this.searchBus(); break;
                         }
                         break;
                         
@@ -94,7 +101,7 @@ public class Menu {
                             case 2: this.viewDriver(); break;
                             case 3: this.viewAzafata(); break;
                             case 4: this.viewAssistant(); break;
-                            case 5: break;
+                            case 5: this.viewBus(); break;
                             default: System.out.println("Opcion no valida"); break;
                         }
                         
@@ -211,7 +218,7 @@ public class Menu {
         
         TipoLicencia tipoLicencia = TipoLicencia.valueOf(this.input.next());
         
-        Chofer cho = new Chofer(tipoLicencia, this.rut, this.nombre, this.apellido, this.telefono);
+        cho = new Chofer(tipoLicencia, this.rut, this.nombre, this.apellido, this.telefono);
         chofer.add(cho);
         
     }
@@ -260,6 +267,9 @@ public class Menu {
      * |------------------------------------------------------------------|
      */
     
+    /**
+     * @info agregar nuevo auxiliar
+     */
     private void addNewAssistant() {
         System.out.println("------------ Auxliar --------------------");
         System.out.println("Rut: ");
@@ -274,6 +284,7 @@ public class Menu {
         System.out.println("Telefono");
         this.telefono = this.input.next();
         
+        System.out.println("Telefono de Emergencia: ");
         String telefonoEmergencia = this.input.next();
         
         Auxiliar aux = new Auxiliar(telefonoEmergencia, this.rut, this.nombre, this.apellido, this.telefono);
@@ -281,6 +292,9 @@ public class Menu {
         
     }
     
+    /**
+     * @info ver lista de auxliar
+     */
     private void viewAssistant() {
         System.out.println("------------------ Lista de auxiliares -----------------");
         if(auxiliar.isEmpty()) 
@@ -385,4 +399,112 @@ public class Menu {
                 return a.getNombre() + " " + a.getApellido() + " " + a.getEdad();
         return "[Error] Resultado no encontrado";
     }
+    
+    /**
+     * |-----------------------------------------------------------------------|
+     * |                            Buses                                      |
+     * |-----------------------------------------------------------------------|
+     */
+    
+    /**
+     * @info agregar nuevo bus al sistema XD--
+     */
+    private void addNewBus() {
+        System.out.println("----------------- Buses -------------------------");
+        
+        if(chofer.isEmpty() && azafata.isEmpty() && auxiliar.isEmpty()){
+            System.out.println("[ERRROR] Bus no agregado!");
+            System.out.println("[ERROR] Ingresar [chofer, azafata i/o auxiliar correspondiente]°");
+        }
+        else {
+            String patente, ciudadSalida, ciudadDestino, horaSalida, rutChofer, rutAzafata, rutAuxiliar;
+            int capacidad;
+
+            System.out.println("Patente: ");
+            patente = this.input.next();
+            System.out.println("Capacidad Bus: ");
+            capacidad = this.input.nextInt();
+            System.out.println("Ciudad Salida: ");
+            ciudadSalida = this.input.next();
+            System.out.println("Ciudad Destino: ");
+            ciudadDestino = this.input.next();
+            System.out.println("Hora Salida: ");
+            horaSalida = this.input.next();
+            // @add :chofer
+            System.out.println("Rut Chofer: ");
+            rutChofer = this.input.next();
+            if(chofer.isEmpty())
+                System.out.println("[Error] No hay choferes ingresados!");
+            else
+                chofer.forEach((item) -> {
+                    if(item.getRut().equals(rutChofer))
+                      cho = item;
+                    else
+                        System.out.println("[ERROR]Este rut no existe");
+                });
+            // @add :azafata
+            System.out.println("Rut Azafata: ");
+            rutAzafata = this.input.next();
+            if(azafata.isEmpty())
+                System.out.println("[Error] No hay azafatas ingresadas!");
+            else
+                azafata.forEach((item) -> {
+                    if(item.getRut().equals(rutAzafata))
+                        aza = item;
+                    else 
+                        System.out.println("[ERROR]Este rut no existe");
+                });
+            // @add auxiliar
+            System.out.println("Rut Axuliar: ");
+            rutAuxiliar = this.input.next();
+
+            if(auxiliar.isEmpty())
+                System.out.println("[Error] No hay auxiliares ingresados!");
+            else
+                auxiliar.forEach((item) -> {
+                    if (item.getRut().equals(rutAuxiliar))
+                        aux = item;
+                    else
+                        System.out.println("[ERROR]Este rut no existe");
+                });
+            Bus b = new Bus(patente, capacidad, ciudadSalida, ciudadDestino, horaSalida, cho, aza, aux);
+            bus.add(b);
+            System.out.println("Bus agregado correctamente");
+        }
+    }
+    
+    /**
+     * @info ver los datos de los busses
+     */
+    private void viewBus() {
+        bus.forEach((item) -> {
+            System.out.println(item.getCapacidad() + "Patente: " + item.getPatente() + 
+                    " \nChofer: " + item.gettChofer().getNombre() + " " + item.gettChofer().getApellido() +
+                    " \nAzafata: " + item.gettAzafata().getNombre() + " " + item.gettAzafata().getApellido() +
+                    " \nAuxiliar: " + item.gettAuxiliar().getNombre() + " " + item.gettAuxiliar().getApellido() +
+                    " \nCapacidad: " + item.getCapacidad());
+        });
+    }
+    
+    /**
+     * @ para buscar el bus correspondiente°
+     */
+    private void searchBus() {
+        if(bus.isEmpty())
+            System.out.println("[ERROR] no hay buses ingresados!");
+        else{
+            String patenteB = this.input.next();
+            bus.forEach((item) -> {
+                if(item.getPatente().equals(patenteB))
+                    System.out.println(item.getCapacidad() + "Patente: " + item.getPatente() + 
+                        " \nChofer: " + item.gettChofer().getNombre() + " " + item.gettChofer().getApellido() +
+                        " \nAzafata: " + item.gettAzafata().getNombre() + " " + item.gettAzafata().getApellido() +
+                        " \nAuxiliar: " + item.gettAuxiliar().getNombre() + " " + item.gettAuxiliar().getApellido() +
+                        " \nCapacidad: " + item.getCapacidad());
+                else
+                    System.out.println("[ERROR] registro no encontrado!");
+            });
+        }
+    }
+    
 }
