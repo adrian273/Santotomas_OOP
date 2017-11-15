@@ -85,6 +85,10 @@ public class Menu {
                             case 5: this.searchBus(); break;
                         }
                         break;
+                    
+                    case 3:
+                        System.out.println("-------------- Reservacion -----------------------");
+                        this.addNewReservation(); break;
                         
                     /**
                      * @info para ver los datos 
@@ -507,4 +511,33 @@ public class Menu {
         }
     }
     
+    /**
+     * @ agregar nueva reservacion
+     */
+    private void addNewReservation() {
+       String ciudadSalida = this.input.next();
+       String ciudadDestino = this.input.next();
+       bus.forEach((item) -> {
+           if(item.getCiudadSalida().equals(ciudadSalida) && item.getCiudadDestino().equals(ciudadDestino))
+               System.out.println("Patente: " + item.getPatente());
+               System.out.println("Chofer: " + item.gettChofer().getNombre() + " " + item.gettChofer().getApellido());
+               System.out.println("Capacidad: " + item.getCapacidad());
+               System.out.println("Hora Salida: " + item.getHoraSalida());
+               System.out.println("-------------------------------------------");
+               
+               String patente = this.input.next();
+               if(item.getPatente().equals(patente))
+                   this.asientoDisponibles(item.getCapacidad());
+               
+       });
+        
+    }
+    
+    private void asientoDisponibles(int capacidad) {
+          System.out.println("Numero asiento: ");
+          System.out.println("Estado Reserva: " + Arrays.toString(ReservaEstado.values()));
+          
+          ReservaEstado reserva = ReservaEstado.valueOf(this.input.next());
+          System.out.println("Estado Reserva: ");
+    }
 }
