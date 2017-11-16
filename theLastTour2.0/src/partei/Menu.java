@@ -88,7 +88,13 @@ public class Menu {
                     
                     case 3:
                         System.out.println("-------------- Reservacion -----------------------");
-                        this.addNewReservation(); break;
+                        System.out.println("1.. Reserva de asiento");
+                        System.out.println("2.. Ver Buses disponibles");
+                        option = this.input.nextInt();
+                        switch(option) {
+                            case 1: 
+                                System.out.println("Patente: ");
+                        }
                         
                     /**
                      * @info para ver los datos 
@@ -243,7 +249,7 @@ public class Menu {
     }
     
     /**
-     * buscador de choferes.
+     * @info buscador de choferes.
      */
     private void searchDriver() {
         System.out.println("Ingrese rut: ");
@@ -382,7 +388,7 @@ public class Menu {
     }
     
     /**
-     * buscador de azafatas.
+     * @info buscador de azafatas.
      */
     private void searchAzafata() {
         System.out.println("Ingrese rut: ");
@@ -437,6 +443,7 @@ public class Menu {
             // @add :chofer
             System.out.println("Rut Chofer: ");
             rutChofer = this.input.next();
+            // @info :reviso si estan vacios primero
             if(chofer.isEmpty())
                 System.out.println("[Error] No hay choferes ingresados!");
             else
@@ -527,17 +534,7 @@ public class Menu {
                
                String patente = this.input.next();
                if(item.getPatente().equals(patente))
-                   this.asientoDisponibles(item.getCapacidad());
-               
+                   System.out.println("Chofer" + item.gettChofer().getNombre());   
        });
-        
-    }
-    
-    private void asientoDisponibles(int capacidad) {
-          System.out.println("Numero asiento: ");
-          System.out.println("Estado Reserva: " + Arrays.toString(ReservaEstado.values()));
-          
-          ReservaEstado reserva = ReservaEstado.valueOf(this.input.next());
-          System.out.println("Estado Reserva: ");
     }
 }

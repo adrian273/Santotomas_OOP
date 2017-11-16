@@ -16,7 +16,15 @@ public class Chofer extends Tripulacion {
     public Chofer() {
         this.Licencia = TipoLicencia.A2;
     }
-
+    
+    /**
+     * 
+     * @param Licencia del chofer
+     * @param Rut del chofer
+     * @param Nombre del chofer
+     * @param Apellido del chofer
+     * @param Telefono del chofer
+     */
     public Chofer(TipoLicencia Licencia, String Rut, String Nombre, String Apellido, String Telefono) {
         super(Rut, Nombre, Apellido, Telefono);
         this.Licencia = Licencia;
