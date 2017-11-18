@@ -29,11 +29,19 @@ public class Chofer extends Tripulacion {
         super(Rut, Nombre, Apellido, Telefono);
         this.Licencia = Licencia;
     }
-
+    
+    /**
+     * 
+     * @return el tipo de licencia del conductor 
+     */
     public TipoLicencia getLicencia() {
         return Licencia;
     }
-
+    
+    /**
+     * 
+     * @param Licencia setea el tipo de licencia del conductor
+     */
     public void setLicencia(TipoLicencia Licencia) {
         this.Licencia = Licencia;
     }

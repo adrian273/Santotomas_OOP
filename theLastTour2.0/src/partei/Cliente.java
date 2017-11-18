@@ -11,7 +11,15 @@ package partei;
  */
 public class Cliente extends Persona{
     private String Correo;
-
+    
+    /**
+     * 
+     * @param Correo del cliente
+     * @param Rut del cliente
+     * @param Nombre del cliente
+     * @param Apellido del cliente
+     * @param Telefono  del cliente
+     */
     public Cliente(String Correo, String Rut, String Nombre, String Apellido, String Telefono) {
         super(Rut, Nombre, Apellido, Telefono);
         this.Correo = Correo;
@@ -23,11 +31,18 @@ public class Cliente extends Persona{
         
     }
   
-
+    /**
+     * 
+     * @return correo del cliente; 
+     */
     public String getCorreo() {
         return Correo;
     }
-
+    
+    /**
+     * 
+     * @param Correo setea el correo del cliente;
+     */
     public void setCorreo(String Correo) {
         this.Correo = Correo;
     }

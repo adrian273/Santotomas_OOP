@@ -10,6 +10,9 @@ public class ParteI {
 
    
     public static void main(String[] args) {
+       /**
+        * instancio la clase menu XD
+        */
        Menu main = new Menu();
        main.Main();
     }

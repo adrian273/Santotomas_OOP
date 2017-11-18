@@ -88,14 +88,8 @@ public class Menu {
                     
                     case 3:
                         System.out.println("-------------- Reservacion -----------------------");
-                        System.out.println("1.. Reserva de asiento");
-                        System.out.println("2.. Ver Buses disponibles");
-                        option = this.input.nextInt();
-                        switch(option) {
-                            case 1: 
-                                System.out.println("Patente: ");
-                        }
-                        
+                        this.addNewReservation(); break;
+                               
                     /**
                      * @info para ver los datos 
                      */
@@ -179,7 +173,7 @@ public class Menu {
     }
     
     /**
-     * buscador de Cliente.
+     * @info buscador de Cliente.
      */
     private void searchClient() {
         System.out.println("Ingrese rut: ");
@@ -316,7 +310,7 @@ public class Menu {
     }
     
     /**
-     * buscador de Axuliarles.
+     * @info buscador de Axuliarles.
      */
     private void searchAssistant() {
         System.out.println("Ingrese rut: ");
@@ -522,7 +516,9 @@ public class Menu {
      * @ agregar nueva reservacion
      */
     private void addNewReservation() {
+       System.out.println("Ciudad de salida: ");
        String ciudadSalida = this.input.next();
+       System.out.println("Ciudad de destino: ");
        String ciudadDestino = this.input.next();
        bus.forEach((item) -> {
            if(item.getCiudadSalida().equals(ciudadSalida) && item.getCiudadDestino().equals(ciudadDestino))
@@ -534,7 +530,9 @@ public class Menu {
                
                String patente = this.input.next();
                if(item.getPatente().equals(patente))
-                   System.out.println("Chofer" + item.gettChofer().getNombre());   
+                   System.out.println("Chofer" + item.gettChofer().getNombre());
+            else
+                   System.out.println("Nose encunetra el resultado");
        });
     }
 }
