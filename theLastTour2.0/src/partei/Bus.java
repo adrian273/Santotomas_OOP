@@ -36,7 +36,7 @@ public class Bus {
      * @param tAzafata datos de la azafata
      * @param tAuxiliar  datos del auxiliar
      */
-    public Bus(String Patente, int Capacidad, String CiudadSalida, String CiudadDestino, String HoraSalida, Chofer tChofer, Azafata tAzafata, Auxiliar tAuxiliar) {
+    public Bus(String Patente, int Capacidad, String CiudadSalida, String CiudadDestino, String HoraSalida, Chofer tChofer, Azafata tAzafata, Auxiliar tAuxiliar, NuevoAsiento asiento) {
         this.Patente = Patente;
         this.Capacidad = Capacidad;
         this.CiudadSalida = CiudadSalida;
@@ -45,6 +45,7 @@ public class Bus {
         this.tChofer = tChofer;
         this.tAzafata = tAzafata;
         this.tAuxiliar = tAuxiliar;
+        this.setNuevoAsiento(asiento);
     }
     
     /**

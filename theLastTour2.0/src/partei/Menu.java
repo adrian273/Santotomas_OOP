@@ -3,6 +3,7 @@ package partei;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -35,6 +36,9 @@ public class Menu {
     }
     
     public void Main() {
+        Reservation reserva = new Reservation();
+        DatoAplicacion dato = new DatoAplicacion();
+        dato.setDato(cliente, chofer, azafata, bus, auxiliar);
         String[] options = {"1.. Agregar", "2.. Buscar", "3.. Reserva", "4.. Ver", "5.. Salir"};
         String[] optionsMain = {"1.. Cliente", "2.. Chofer", "3.. Azafata", "4.. Auxiliar", "5.. Buses"};
         int option;
@@ -88,7 +92,13 @@ public class Menu {
                     
                     case 3:
                         System.out.println("-------------- Reservacion -----------------------");
-                        this.addNewReservation(); break;
+                        System.out.println("********Buses disponibles******");
+                        this.viewBus();
+                        System.out.println("Patente: ");
+                        String patente = input.next();
+                        reserva.dibujarAsiento(bus, patente);
+                        reservarAsientos(bus,patente);
+                        break;
                                
                     /**
                      * @info para ver los datos 
@@ -421,6 +431,7 @@ public class Menu {
             System.out.println("[ERROR] Ingresar [chofer, azafata i/o auxiliar correspondiente]°");
         }
         else {
+            Bus b = new Bus();
             String patente, ciudadSalida, ciudadDestino, horaSalida, rutChofer, rutAzafata, rutAuxiliar;
             int capacidad;
 
@@ -472,7 +483,19 @@ public class Menu {
                     else
                         System.out.println("[ERROR]Este rut no existe");
                 });
-            Bus b = new Bus(patente, capacidad, ciudadSalida, ciudadDestino, horaSalida, cho, aza, aux);
+            
+            b.setPatente(patente);
+            b.setCapacidad(capacidad);
+            b.setCiudadSalida(ciudadSalida);
+            b.setCiudadDestino(ciudadDestino);
+            b.setHoraSalida(horaSalida);
+            b.settChofer(cho);
+            b.settAzafata(aza);
+            b.settAuxiliar(aux);
+            NuevoAsiento nA = new NuevoAsiento();
+            nA.setReserva("");
+            b.setNuevoAsiento(nA);
+            
             bus.add(b);
             System.out.println("Bus agregado correctamente");
         }
@@ -483,11 +506,12 @@ public class Menu {
      */
     private void viewBus() {
         bus.forEach((item) -> {
-            System.out.println(item.getCapacidad() + "Patente: " + item.getPatente() + 
+            System.out.println("Patente: " + item.getPatente() + 
                     " \nChofer: " + item.gettChofer().getNombre() + " " + item.gettChofer().getApellido() +
                     " \nAzafata: " + item.gettAzafata().getNombre() + " " + item.gettAzafata().getApellido() +
                     " \nAuxiliar: " + item.gettAuxiliar().getNombre() + " " + item.gettAuxiliar().getApellido() +
                     " \nCapacidad: " + item.getCapacidad());
+                    System.out.println("----------------------------------------------------------------------");
         });
     }
     
@@ -512,27 +536,24 @@ public class Menu {
         }
     }
     
-    /**
-     * @ agregar nueva reservacion
-     */
-    private void addNewReservation() {
-       System.out.println("Ciudad de salida: ");
-       String ciudadSalida = this.input.next();
-       System.out.println("Ciudad de destino: ");
-       String ciudadDestino = this.input.next();
-       bus.forEach((item) -> {
-           if(item.getCiudadSalida().equals(ciudadSalida) && item.getCiudadDestino().equals(ciudadDestino))
-               System.out.println("Patente: " + item.getPatente());
-               System.out.println("Chofer: " + item.gettChofer().getNombre() + " " + item.gettChofer().getApellido());
-               System.out.println("Capacidad: " + item.getCapacidad());
-               System.out.println("Hora Salida: " + item.getHoraSalida());
-               System.out.println("-------------------------------------------");
-               
-               String patente = this.input.next();
-               if(item.getPatente().equals(patente))
-                   System.out.println("Chofer" + item.gettChofer().getNombre());
-            else
-                   System.out.println("Nose encunetra el resultado");
-       });
+    
+    public static void reservarAsientos(List<Bus> bus, String patente) {
+        System.out.println("Ingresar asiento: ");
+        Scanner sc = new Scanner(System.in);
+        int numeroAsiento = sc.nextInt();
+        bus.forEach((elemento) -> {
+            if(elemento.getPatente().equalsIgnoreCase(patente)) {
+                String r = elemento.getAsiento().getReserva();
+                if(r.isEmpty()){
+                    r = numeroAsiento + "";
+                }
+                else {
+                    r = r + ";" + numeroAsiento;
+                }
+                elemento.getAsiento().setReserva(r);
+            }
+        });
+        System.out.println("Asiento seleccionado: " + numeroAsiento);
+        
     }
 }
