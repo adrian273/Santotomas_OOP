@@ -6,13 +6,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adrian
+ * @author Adrian Verdugo
  */
 public class Helpers {
 
     private final Scanner input;
     private Map<String, Persona> dataMap;
-
+    public static String rut, nombre;
+    public static int edad;
+    
     public Helpers() {
         this.dataMap = new HashMap<>();
         this.input = new Scanner(System.in);
@@ -25,8 +27,6 @@ public class Helpers {
         System.out.println("|------------------------------------------------|");
         System.out.println("|              << Ingreso Personas               |");
         System.out.println("|------------------------------------------------|");
-        String rut, nombre;
-        int edad;
         System.out.println(">> Rut : ");
         rut = this.input.next();
         System.out.println(">> Nombre: ");
@@ -75,8 +75,27 @@ public class Helpers {
         }
     }
     
+    /**
+     * @info modificar persona
+     */
     public void updatePerson() {
-        
+        System.out.println("|------------------------------------------------|");
+        System.out.println("|              << Modificar Personas             |");
+        System.out.println("|------------------------------------------------|");
+        viewPerson();
+        System.out.println(">> Rut: ");
+        rut = this.input.next();
+        if(this.dataMap.containsKey(rut)){
+           this.dataMap.remove(rut);
+        }
+        System.out.println(">> Rut : ");
+        rut = this.input.next();
+        System.out.println(">> Nombre: ");
+        nombre = this.input.next();
+        System.out.println(">> Edad: ");
+        edad = this.input.nextInt();
+        Persona ps1 = new Persona(rut, nombre, edad);
+        this.dataMap.put(rut, ps1);
     }
     
 }

@@ -40,6 +40,7 @@ public class CrudPersona {
                         break;
                         
                 case 2: 
+                    help.updatePerson();
                     break;
                     
                 case 3: 
