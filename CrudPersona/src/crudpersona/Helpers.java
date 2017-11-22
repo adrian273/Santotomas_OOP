@@ -60,7 +60,7 @@ public class Helpers {
      */
     public void deletePerson() {
         System.out.println("|------------------------------------------------|");
-        System.out.println("|              << Eliminar Personas               |");
+        System.out.println("|              << Eliminar Personas              |");
         System.out.println("|------------------------------------------------|");
         viewPerson();
         System.out.println(">> Rut: ");
@@ -99,7 +99,7 @@ public class Helpers {
             System.out.println("[SUCCESS]>> Modificado correctamente! ");
         } 
         else {
-            System.out.println("[ERRO]>> Rut no encontrado!");
+            System.out.println("[ERROR]>> Rut no encontrado!");
         }
         
     }
