@@ -1,22 +1,17 @@
 package crudpersona;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Scanner;
 /**
  *
  * @author Adrian Verdugo
+ * @since 22-10-2017
  */
 public class CrudPersona {
 
     
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         
-        Map<String, Persona> dataMap;
-        dataMap = new HashMap<>();
+        Scanner input = new Scanner(System.in);
         Helpers help = new Helpers();
        
         

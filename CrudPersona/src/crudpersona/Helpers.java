@@ -71,7 +71,7 @@ public class Helpers {
             System.out.println("[SUCCESS]>> Eliminado Correctamente!");
         }
         else{
-            System.out.println("[ERROR]>> Rut no encontrado");
+            System.out.println("[ERROR]>> Rut no encontrado!");
         }
     }
     
@@ -87,15 +87,21 @@ public class Helpers {
         rut = this.input.next();
         if(this.dataMap.containsKey(rut)){
            this.dataMap.remove(rut);
+           System.out.println(">> Rut : ");
+           rut = this.input.next();
+           System.out.println(">> Nombre: ");
+           nombre = this.input.next();
+           System.out.println(">> Edad: ");
+           edad = this.input.nextInt();
+           Persona ps1 = new Persona(rut, nombre, edad);
+           this.dataMap.put(rut, ps1);
+           viewPerson();
+            System.out.println("[SUCCESS]>> Modificado correctamente! ");
+        } 
+        else {
+            System.out.println("[ERRO]>> Rut no encontrado!");
         }
-        System.out.println(">> Rut : ");
-        rut = this.input.next();
-        System.out.println(">> Nombre: ");
-        nombre = this.input.next();
-        System.out.println(">> Edad: ");
-        edad = this.input.nextInt();
-        Persona ps1 = new Persona(rut, nombre, edad);
-        this.dataMap.put(rut, ps1);
+        
     }
     
 }
