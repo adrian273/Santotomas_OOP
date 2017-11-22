@@ -87,8 +87,6 @@ public class Helpers {
         rut = this.input.next();
         if(this.dataMap.containsKey(rut)){
            this.dataMap.remove(rut);
-           System.out.println(">> Rut : ");
-           rut = this.input.next();
            System.out.println(">> Nombre: ");
            nombre = this.input.next();
            System.out.println(">> Edad: ");
@@ -96,7 +94,7 @@ public class Helpers {
            Persona ps1 = new Persona(rut, nombre, edad);
            this.dataMap.put(rut, ps1);
            viewPerson();
-            System.out.println("[SUCCESS]>> Modificado correctamente! ");
+           System.out.println("[SUCCESS]>> Modificado correctamente! ");
         } 
         else {
             System.out.println("[ERROR]>> Rut no encontrado!");
