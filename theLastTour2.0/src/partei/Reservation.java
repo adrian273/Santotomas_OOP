@@ -16,7 +16,8 @@ public class Reservation {
                                 System.out.println("    *******************");
                                 System.out.println("   *                   **  ");
                                 System.out.println("  *                     **  ");
-                                System.out.println(" ╔═══════════════════════╗");
+                                System.out.println(" +++++++++++++++++++++++++");
+                                System.out.println("++++++++++++++++++++++++++++");
                                 String escribir = "";
                                 int contar = 0;
                                 for(int i = 1; i <= item.getCapacidad(); i ++){
@@ -86,10 +87,10 @@ public class Reservation {
                                         System.out.println(escribir + "                   ║");
                                     }
                                     if(escribir.length() == 9){
-					System.out.println(escribir + "                ║");
+                                        System.out.println(escribir + "                ║");
                                     }
                                     if(escribir.length() == 21){
-					System.out.println(escribir + "    ║");
+                                        System.out.println(escribir + "    ║");
                                     }
                                 }
                                 System.out.println(" ╚═══════════════════════╝");
