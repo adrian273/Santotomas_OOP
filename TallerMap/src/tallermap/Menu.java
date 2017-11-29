@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.function.Consumer;
 
 /**
  *
@@ -29,12 +30,13 @@ public class Menu {
     public void Principal() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int option = 0;
-        while (option !=5){
+        while (option != 6){
             System.out.println("Menu Principal");
             System.out.println("1.- Agregar Trabajador");
             System.out.println("2.- Modificar Trabajador");
             System.out.println("3.- Eliminar Trabajador");
             System.out.println("4.- Listar Trabajador");
+            System.out.println("5.- Buscar Inicial (Apellido)");
             System.out.print("\n Ingrese su opcion: ");
             option = Integer.parseInt(br.readLine());
             switch (option) {
@@ -51,7 +53,10 @@ public class Menu {
                             this.EliminarTrabajador();
                         break;
                 case 4: this.ListarTrabajadores();
-                        break;                        
+                        break;
+                case 5:
+                    this.SearchLastName();
+                    break;
             }
         }
     }
@@ -122,7 +127,21 @@ public class Menu {
         }
     }
     
+    /**
+     * Busqueda porinicial del apellido
+     * Adrian Verdugo
+     * @throws IOException 
+     */
     private void SearchLastName() throws IOException {
-        
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        String lastName = input.readLine();
+        String sLastName = lastName.substring(0, 1);
+        System.out.println(sLastName);
+        this.Lista.values().forEach((Trabajador item) -> {
+            if(item.getApellido().substring(0, 1).contains(sLastName))
+                System.out.println(item.Fullname());
+            else
+                System.out.println("[ERROR] No se encuentra!");
+        });
     }
 }
