@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.Objects;
+
 /**
  *
  * @author Adrian Verdugo
@@ -48,6 +50,36 @@ public class Pasajero extends Persona {
      */
     public void setPasaje(Pasaje pasaje) {
         this.pasaje = pasaje;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.pasaje);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pasajero other = (Pasajero) obj;
+        if (!Objects.equals(this.pasaje, other.pasaje)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pasajero{" + "pasaje=" + pasaje + '}';
     }
     
     

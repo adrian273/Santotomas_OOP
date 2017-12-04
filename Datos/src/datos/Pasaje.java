@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.Objects;
+
 /**
  *
  * @author Adrian Verdugo
@@ -131,5 +133,50 @@ public class Pasaje {
     public void setValorPasaje(int valorPasaje) {
         this.valorPasaje = valorPasaje;
     }
+
+    @Override
+    public String toString() {
+        return "Pasaje{" + "numeroVuelo=" + numeroVuelo + ", fechaVuelo=" + fechaVuelo + ", horaVuelo=" + horaVuelo + ", origenVuelo=" + origenVuelo + ", tipoClase=" + tipoClase + ", valorPasaje=" + valorPasaje + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pasaje other = (Pasaje) obj;
+        if (this.numeroVuelo != other.numeroVuelo) {
+            return false;
+        }
+        if (this.valorPasaje != other.valorPasaje) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaVuelo, other.fechaVuelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.horaVuelo, other.horaVuelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.origenVuelo, other.origenVuelo)) {
+            return false;
+        }
+        if (this.tipoClase != other.tipoClase) {
+            return false;
+        }
+        return true;
+    }
    
+    
 }
