@@ -21,7 +21,18 @@ public class Azafata extends PersonalDeCabina {
         super(nacionalidad, rut, nombre, apellido, edad);
         this.idioma = idioma;
     }
-     
+    
+    /**
+     * 
+     * @param idioma de la azafata 
+     */
+    public Azafata(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public Azafata() {
+    }
+         
     /**
      * 
      * @return idioma de la azafata 

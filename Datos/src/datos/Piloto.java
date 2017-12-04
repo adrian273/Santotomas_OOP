@@ -23,7 +23,18 @@ public class Piloto extends PersonalDeCabina {
         super(nacionalidad, rut, nombre, apellido, edad);
         this.horaVuelo = horaVuelo;
     }
+    
+    /**
+     * 
+     * @param horaVuelo del piloto 
+     */
+    public Piloto(int horaVuelo) {
+        this.horaVuelo = horaVuelo;
+    }
 
+    public Piloto() {
+    }
+    
     /**
      * 
      * @return hora de vuelo del piloto

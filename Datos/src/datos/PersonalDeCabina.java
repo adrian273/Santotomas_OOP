@@ -23,15 +23,13 @@ public abstract class PersonalDeCabina extends Persona {
     
     /**
      * 
-     * @param rut del persona de la cabina
-     * @param nombre del persona de la cabina
-     * @param apellido del persona de la cabina
-     * @param edad del persona de la cabina
+     * @param nacionalidad del personal de cabina 
      */
-    public PersonalDeCabina(String rut, String nombre, String apellido, int edad) {
-        super(rut, nombre, apellido, edad);
+    public PersonalDeCabina(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
-
+    
+    
     public PersonalDeCabina() {
     }
     

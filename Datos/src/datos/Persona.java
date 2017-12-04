@@ -25,6 +25,10 @@ public abstract class Persona {
         this.apellido = apellido;
         this.edad = edad;
     }
+
+    public Persona() {
+    }
+    
     
     /**
      * 
@@ -72,6 +76,22 @@ public abstract class Persona {
      */
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+    
+    /**
+     * 
+     * @return edad de la persona
+     */
+    public int getEdad() {
+        return edad;
+    }
+    
+    /**
+     * 
+     * @param edad de la persona
+     */
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
     
     /**
