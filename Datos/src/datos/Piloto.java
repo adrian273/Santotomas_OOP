@@ -9,12 +9,21 @@ package datos;
 public class Piloto extends PersonalDeCabina {
     
     private int horaVuelo;
-
-    public Piloto(int horaVuelo, String nacionalidad, int edad, String rut, String nombre, String apellido) {
-        super(nacionalidad, edad, rut, nombre, apellido);
+    
+    /**
+     * 
+     * @param horaVuelo del piloto
+     * @param nacionalidad del piloto
+     * @param rut del piloto
+     * @param nombre del piloto
+     * @param apellido del piloto
+     * @param edad del piloto
+     */
+    public Piloto(int horaVuelo, String nacionalidad, String rut, String nombre, String apellido, int edad) {
+        super(nacionalidad, rut, nombre, apellido, edad);
         this.horaVuelo = horaVuelo;
     }
-    
+
     /**
      * 
      * @return hora de vuelo del piloto

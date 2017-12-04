@@ -8,10 +8,10 @@ package datos;
 
 public class Pasajero extends Persona {
 
-    public Pasajero(String rut, String nombre, String apellido) {
-        super(rut, nombre, apellido);
+    public Pasajero(String rut, String nombre, String apellido, int edad) {
+        super(rut, nombre, apellido, edad);
     }
-    
+
     // falta colocar clase @Pasaje
     
 }

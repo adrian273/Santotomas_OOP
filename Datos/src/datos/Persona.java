@@ -10,19 +10,22 @@ public abstract class Persona {
     private String rut;
     private String nombre;
     private String apellido;
+    private int edad;
     
     /**
      * 
      * @param rut de la persona
      * @param nombre de la persona
      * @param apellido de la persona
+     * @param edad de la persona
      */
-    public Persona(String rut, String nombre, String apellido) {
+    public Persona(String rut, String nombre, String apellido, int edad) {
         this.rut = rut;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.edad = edad;
     }
-
+    
     /**
      * 
      * @return el rut de la persona

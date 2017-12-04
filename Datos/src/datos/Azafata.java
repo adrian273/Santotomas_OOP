@@ -10,18 +10,18 @@ public class Azafata extends PersonalDeCabina {
     
     /**
      * 
-     * @param idioma de la azafata
-     * @param nacionalidad de la azafata
-     * @param edad de la azafata
-     * @param rut de la azafata
-     * @param nombre de la azafata
-     * @param apellido de la azafata
+     * @param idioma del personal de cabina
+     * @param nacionalidad del personal de cabina
+     * @param rut del personal de cabina
+     * @param nombre del personal de cabina
+     * @param apellido del personal de cabina
+     * @param edad del personal de cabina
      */
-    public Azafata(String idioma, String nacionalidad, int edad, String rut, String nombre, String apellido) {
-        super(nacionalidad, edad, rut, nombre, apellido);
+    public Azafata(String idioma, String nacionalidad, String rut, String nombre, String apellido, int edad) {
+        super(nacionalidad, rut, nombre, apellido, edad);
         this.idioma = idioma;
     }
-    
+     
     /**
      * 
      * @return idioma de la azafata 
