@@ -12,6 +12,7 @@ public class Pasaje {
     private String fechaVuelo;
     private String horaVuelo;
     private String origenVuelo;
+    private String destinoVuelo;
     private tipoDeClase tipoClase;
     private int valorPasaje;
     
@@ -21,23 +22,24 @@ public class Pasaje {
      * @param fechaVuelo del pasaje
      * @param horaVuelo del pasaje
      * @param origenVuelo del pasaje
+     * @param destinoVuelo del pasaje
      * @param tipoClase del pasaje 
      * @param valorPasaje del pasaje
      */
-    public Pasaje(int numeroVuelo, String fechaVuelo, String horaVuelo, String origenVuelo, tipoDeClase tipoClase, int valorPasaje) {
+    public Pasaje(int numeroVuelo, String fechaVuelo, String horaVuelo, String origenVuelo,String destinoVuelo, tipoDeClase tipoClase, int valorPasaje) {
         this.numeroVuelo = numeroVuelo;
         this.fechaVuelo = fechaVuelo;
         this.horaVuelo = horaVuelo;
         this.origenVuelo = origenVuelo;
+        this.destinoVuelo = destinoVuelo;
         this.tipoClase = tipoClase;
         this.valorPasaje = valorPasaje;
     }
 
     public Pasaje() {
     }
-    
-    
-    
+
+
     /**
      * 
      * @return nuemro del pasaje
@@ -100,6 +102,14 @@ public class Pasaje {
      */
     public void setOrigenVuelo(String origenVuelo) {
         this.origenVuelo = origenVuelo;
+    }
+
+    public String getDestinoVuelo() {
+        return destinoVuelo;
+    }
+
+    public void setDestinoVuelo(String destinoVuelo) {
+        this.destinoVuelo = destinoVuelo;
     }
     
     /**
