@@ -1,5 +1,5 @@
 package javaone;
-
+import negocio.Vuelo;
 /**
  *
  * @author Adrian Verdugo
@@ -9,7 +9,8 @@ package javaone;
 public class JavaOne {
 
     public static void main(String[] args) {
-       
+        Vuelo vuelo = new Vuelo();
+        vuelo.main();
     }
     
 }

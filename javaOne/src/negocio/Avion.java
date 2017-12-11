@@ -83,7 +83,7 @@ public class Avion {
      * @return codigo interno del avion disponible se incrementa en 1 
      */
     public int getCodigoInterno() {
-        return codigoInterno;
+        return codigoInterno += codigoDisponible;
     }
     
     /**
@@ -130,6 +130,14 @@ public class Avion {
     @Override
     public String toString() {
         return "Avion{" + "marca=" + marca + ", modelo=" + modelo + ", capacidadPasajero=" + capacidadPasajero + ", codigoInterno=" + codigoInterno + '}';
+    }
+    
+    /**
+     * 
+     * @return metodo de impresion
+     */
+    public String print() {
+        return this.getCapacidadPasajero() + this.getMarca() + " " + this.getModelo() + " ";
     }
     
 }
