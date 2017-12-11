@@ -133,6 +133,56 @@ public class Vuelo {
         }
     }
     
+    public void addAzafata() {
+        System.out.println(">>> Agregar Azafata");
+        System.out.println("----------------------");
+        System.out.println(">> Rut:");
+        this.rut = input.next();
+        if(data_pasajero.containsKey(this.rut)) {
+            System.out.println("[ERROR] > ya registrado");
+        }
+        else {
+            System.out.println(">> Nombre:");
+            this.nombre = input.next();
+            System.out.println(">> Apellido:");
+            this.apellido = input.next();
+            System.out.println(">> Edad:");
+            
+            this.edad = input.nextInt();
+            System.out.println(">> Nacionalidad:");
+            String nacionalidad = input.next();
+            String idioma = input.next();
+            Azafata azafata = new Azafata(idioma, nacionalidad, this.rut, this.nombre, this.apellido, this.edad);
+            this.data_azafata.put(rut, azafata);
+            System.out.println("[SUCESS] > agregado correctamente");
+        }
+    }
+    
+    public void addPiloto() {
+        System.out.println(">>> Agregar Piloto");
+        System.out.println("----------------------");
+        System.out.println(">> Rut:");
+        this.rut = input.next();
+        if(data_pasajero.containsKey(this.rut)) {
+            System.out.println("[ERROR] > ya registrado");
+        }
+        else {
+            System.out.println(">> Nombre:");
+            this.nombre = input.next();
+            System.out.println(">> Apellido:");
+            this.apellido = input.next();
+            System.out.println(">> Edad:");
+            this.edad = input.nextInt();
+            System.out.println(">> Nacionalidad:");
+            String nacionalidad = input.next();
+            System.out.println(">> Hora de Vuelos:");
+            int horaVuelo = input.nextInt();
+            Piloto piloto = new Piloto(horaVuelo, nacionalidad, this.rut, this.nombre, this.apellido, this.edad);
+            this.data_piloto.put(rut, piloto);
+            System.out.println("[SUCESS] > agregado correctamente");
+        }
+    }
+    
     
     public void main() {
         boolean exit = false;
