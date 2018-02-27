@@ -20,12 +20,15 @@ public class Vuelo {
     
     private String rut, nombre, apellido;
     private int edad;
+    
+    private Servicio servicio;
     /**
      * 
      * @param avion Clase Avion
      */
-    public Vuelo(Avion avion) {
+    public Vuelo(Avion avion, Servicio servicio) {
         this.avion = avion;
+        this.servicio = servicio;
         this.data_pasajero = new HashMap<>();
         this.data_azafata = new HashMap<>();
         this.data_piloto = new HashMap<>();
@@ -52,6 +55,24 @@ public class Vuelo {
     public void setAvion(Avion avion) {
         this.avion = avion;
     }
+    
+    /**
+     * 
+     * @return servicios de entretencion
+     */
+    public Servicio getServicio() {
+        return servicio;
+    }
+    
+    /**
+     * 
+     * @param servicio de entrentencion
+     */
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
+    
+    
     
     /**
      * @info Agregar nuevos pasajeros.
@@ -210,6 +231,11 @@ public class Vuelo {
                 System.out.println("[WARNING] > Rut no encontrado!");
             }
         }
+    }
+    
+    
+    public String print() {
+        return "Marca: " + this.getAvion().getMarca() + "Modelo: " + this.getAvion().getModelo() + "Tiene juegos: " + this.getServicio().getTieneJuego() + "Tiene Audifonos: " + this.getServicio().getTieneAudifono();
     }
     
     /**
